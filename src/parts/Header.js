@@ -1,15 +1,18 @@
-import React from 'react'
-import Button from 'elements/Button';
-import BrandIcon from 'parts/IconText';
+import React from "react";
+import Fade from "react-reveal/Fade";
+import Button from "elements/Button";
+import BrandIcon from "parts/IconText";
+
 export default function Header(props) {
-  const getNavLinkClass = path => {
+  const getNavLinkClass = (path) => {
     return props.location.pathname === path ? "active" : "";
-  }
+  };
   return (
-    <header className="spacing-nm">
+    <Fade>
+      <header className="spacing-nm">
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light">
-              <BrandIcon/>
+            <BrandIcon />
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav ml-auto">
                 <li className={`nav-item ${getNavLinkClass("/")}`}>
@@ -36,7 +39,7 @@ export default function Header(props) {
             </div>
           </nav>
         </div>
-    </header>
-
-  )
+      </header>
+    </Fade>
+  );
 }
