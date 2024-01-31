@@ -1,15 +1,22 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Route, Switch } from "react-router-dom";
 
 import "assets/scss/style.scss";
 import LandingPage from "pages/LandingPages";
-
+import DetailsPage from "pages/DetailsPage";
+import Checkout from "pages/Checkout";
+import BrowseBy from "pages/BrowseBy";
 function App() {
   return (
     <div className="App">
-     <Router>
-        <Route path="/" component={LandingPage}></Route>
-      </Router>
+      {/* <Router> */}
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/browse-by" component={BrowseBy} />
+        <Route exact path="/properties/:id" component={DetailsPage} />
+        <Route exact path="/checkout" component={Checkout} />
+      </Switch>
+      {/* </Router> */}
     </div>
   );
 }
