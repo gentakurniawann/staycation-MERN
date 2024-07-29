@@ -41,7 +41,6 @@ export default class Checkout extends Component {
   }
   render() {
     const { data } = this.state;
-
     const checkout = {
       duration: 2,
     };
@@ -80,101 +79,96 @@ export default class Checkout extends Component {
       <>
         <Header isCentered />
         <Stepper steps={steps}>
-          {(prevStep, nextStep, currentStep, steps) => {
+          {(prevStep, nextStep, CurrentStep, steps) => (
             <>
               <Numbering
                 data={steps}
-                current={currentStep}
+                current={CurrentStep}
                 style={{ marginBottom: 50 }}
               />
 
-              <Meta data={steps} current={currentStep} />
+              <Meta data={steps} current={CurrentStep} />
 
-              <MainContent data={steps} current={currentStep} />
+              <MainContent data={steps} current={CurrentStep} />
 
-              {currentStep === "bookingInformation" && (
-                <Fade>
-                  <Controller>
-                    {data.firstName !== "" &&
-                      data.lastName !== "" &&
-                      data.email !== "" &&
-                      data.phone !== "" && (
-                        <Fade>
-                          <Button
-                            className="btn mb-3"
-                            type="button"
-                            isBlock
-                            isPrimary
-                            hasShadow
-                            onClick={nextStep}
-                          >
-                            Continue to Book
-                          </Button>
-                        </Fade>
-                      )}
-                    <Button
-                      className="btn"
-                      type="link"
-                      isBlock
-                      isLight
-                      href={`/properties/${ItemDetails._id}`}
-                    >
-                      Cancel
-                    </Button>
-                  </Controller>
-                </Fade>
+              {CurrentStep === "bookingInformation" && (
+                <Controller>
+                  {data.firstName !== "" &&
+                    data.lastName !== "" &&
+                    data.email !== "" &&
+                    data.phone !== "" && (
+                      <Fade>
+                        <Button
+                          className="btn mb-3"
+                          type="button"
+                          isBlock
+                          isPrimary
+                          hasShadow
+                          onClick={nextStep}
+                        >
+                          Continue to Book
+                        </Button>
+                      </Fade>
+                    )}
+                  <Button
+                    className="btn"
+                    type="link"
+                    isBlock
+                    isLight
+                    href={`/properties/${ItemDetails._id}`}
+                  >
+                    Cancel
+                  </Button>
+                </Controller>
               )}
 
-              {currentStep === "payment" && (
-                <Fade>
-                  <Controller>
-                    {data.proofPayment !== "" &&
-                      data.bankName !== "" &&
-                      data.bankHolder !== "" && (
-                        <Fade>
-                          <Button
-                            className="btn mb-3"
-                            type="button"
-                            isBlock
-                            isPrimary
-                            hasShadow
-                            onClick={nextStep}
-                          >
-                            Continue to Book
-                          </Button>
-                        </Fade>
-                      )}
-                    <Button
-                      className="btn"
-                      type="button"
-                      isBlock
-                      isLight
-                      href={prevStep}
-                    >
-                      Cancel
-                    </Button>
-                  </Controller>
-                </Fade>
+              {CurrentStep === "payment" && (
+                <Controller>
+                  {data.proofPayment !== "" &&
+                    data.proofPayment.length !== 0 &&
+                    data.bankName !== "" &&
+                    data.bankHolder !== "" && (
+                      <Fade>
+                        <Button
+                          className="btn mb-3"
+                          type="button"
+                          isBlock
+                          isPrimary
+                          hasShadow
+                          onClick={nextStep}
+                        >
+                          Continue to Book
+                        </Button>
+                      </Fade>
+                    )}
+                  <Button
+                    className="btn"
+                    type="button"
+                    isBlock
+                    isLight
+                    onClick={prevStep}
+                  >
+                    Cancel
+                  </Button>
+                </Controller>
               )}
 
-              {currentStep === "completed" && (
-                <Fade>
-                  <Controller>
-                    <Button
-                      className="btn"
-                      type="link"
-                      isBlock
-                      isPrimary
-                      hasShadow
-                      href=""
-                    >
-                      Back to Home
-                    </Button>
-                  </Controller>
-                </Fade>
+              {CurrentStep === "completed" && (
+                <Controller>
+                  <Button
+                    className="btn"
+                    type="link"
+                    isBlock
+                    isPrimary
+                    hasShadow
+                    href=""
+                  >
+                    Back to Home
+                  </Button>
+                </Controller>
               )}
-            </>;
-          }}
+            </>
+          )}
         </Stepper>
       </>
     );

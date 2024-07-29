@@ -1,5 +1,6 @@
 import React from "react";
 import Fade from "react-reveal";
+
 import { InputText, InputFile } from "elements/Form";
 
 import logoBca from "assets/images/logo-bca.jpg";
@@ -9,7 +10,7 @@ export default function Payment(props) {
   const { data, ItemDetails, checkout } = props;
 
   const tax = 10;
-  const subTotal = ItemDetails.price + checkout.duration;
+  const subTotal = ItemDetails.price * checkout.duration;
   const grandTotal = (subTotal * tax) / 100 + subTotal;
 
   return (
@@ -55,6 +56,7 @@ export default function Payment(props) {
               <InputFile
                 accept="image/*"
                 id="proofPayment"
+                name="proofPayment"
                 value={data.proofPayment}
                 onChange={props.onChange}
               />
