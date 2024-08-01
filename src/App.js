@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import "assets/scss/style.scss";
 import LandingPage from "pages/LandingPages";
@@ -17,6 +18,8 @@ function App() {
         <Route exact path="/checkout" component={Checkout} />
       </Switch>
       {/* </Router> */}
+      
+      <ToastContainer></ToastContainer>
     </div>
   );
 }

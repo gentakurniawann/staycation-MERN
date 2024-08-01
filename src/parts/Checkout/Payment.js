@@ -1,5 +1,5 @@
 import React from "react";
-import Fade from "react-reveal";
+import Fade from "react-reveal/Fade";
 
 import { InputText, InputFile } from "elements/Form";
 
@@ -38,7 +38,7 @@ export default function Payment(props) {
 
               <div className="row">
                 <div className="col-3 text-right">
-                  <img src={logoMandiri} alt="bank mandiri" width="60" />
+                  <img src={logoMandiri} alt="mandiri" width="60" />
                 </div>
                 <div className="col">
                   <dl>
